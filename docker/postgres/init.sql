@@ -1,0 +1,1 @@
+CREATE DATABASE orders_db encoding='UTF-8' OWNER = postgres;

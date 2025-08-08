@@ -8,7 +8,7 @@ CREATE TABLE customer
     email VARCHAR(255) UNIQUE NOT NULL,
     phone VARCHAR(50)
 );
-COMMENT ON TABLE customer IS 'Таблица клиентов';
+COMMENT ON TABLE customer IS 'РўР°Р±Р»РёС†Р° РєР»РёРµРЅС‚РѕРІ';
 
 CREATE TABLE category
 (
@@ -16,7 +16,7 @@ CREATE TABLE category
     name        VARCHAR(255) NOT NULL,
     description TEXT
 );
-COMMENT ON TABLE category IS 'Таблица категорий товаров';
+COMMENT ON TABLE category IS 'РўР°Р±Р»РёС†Р° РєР°С‚РµРіРѕСЂРёР№ С‚РѕРІР°СЂРѕРІ';
 
 CREATE TABLE product
 (
@@ -26,7 +26,7 @@ CREATE TABLE product
     category_id INT            NOT NULL,
     CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES category (id)
 );
-COMMENT ON TABLE category IS 'Таблица товаров';
+COMMENT ON TABLE category IS 'РўР°Р±Р»РёС†Р° С‚РѕРІР°СЂРѕРІ';
 
 CREATE TABLE orders
 (
@@ -37,7 +37,7 @@ CREATE TABLE orders
     total_amount NUMERIC(10, 2) NOT NULL,
     CONSTRAINT fk_order_customer FOREIGN KEY (customer_id) REFERENCES customer (id)
 );
-COMMENT ON TABLE category IS 'Таблица заказов';
+COMMENT ON TABLE category IS 'РўР°Р±Р»РёС†Р° Р·Р°РєР°Р·РѕРІ';
 
 CREATE TABLE order_item
 (
@@ -49,7 +49,7 @@ CREATE TABLE order_item
     CONSTRAINT fk_orderitem_order FOREIGN KEY (order_id) REFERENCES orders (id),
     CONSTRAINT fk_orderitem_product FOREIGN KEY (product_id) REFERENCES product (id)
 );
-COMMENT ON TABLE category IS 'Таблица товаров в заказах';
+COMMENT ON TABLE category IS 'РўР°Р±Р»РёС†Р° С‚РѕРІР°СЂРѕРІ РІ Р·Р°РєР°Р·Р°С…';
 
 CREATE INDEX idx_product_category ON product (category_id);
 CREATE INDEX idx_order_customer ON orders (customer_id);

@@ -1,0 +1,1 @@
+ALTER TABLE shop.product ADD COLUMN  quantity_stock INT NOT NULL DEFAULT 0

@@ -1,7 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS shop;
 SET search_path TO shop;
 
-CREATE TABLE customer
+CREATE TABLE IF NOT EXISTS customer
 (
     id    SERIAL PRIMARY KEY,
     name  VARCHAR(255)        NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE customer
 );
 COMMENT ON TABLE customer IS 'Таблица клиентов';
 
-CREATE TABLE category
+CREATE TABLE IF NOT EXISTS category
 (
     id          SERIAL PRIMARY KEY,
     name        VARCHAR(255) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE category
 );
 COMMENT ON TABLE category IS 'Таблица категорий товаров';
 
-CREATE TABLE product
+CREATE TABLE IF NOT EXISTS product
 (
     id          SERIAL PRIMARY KEY,
     name        VARCHAR(255)   NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE product
 );
 COMMENT ON TABLE category IS 'Таблица товаров';
 
-CREATE TABLE orders
+CREATE TABLE IF NOT EXISTS orders
 (
     id           SERIAL PRIMARY KEY,
     customer_id  INT            NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE orders
 );
 COMMENT ON TABLE category IS 'Таблица заказов';
 
-CREATE TABLE order_item
+CREATE TABLE IF NOT EXISTS order_item
 (
     id         SERIAL PRIMARY KEY,
     order_id   INT            NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE order_item
 );
 COMMENT ON TABLE category IS 'Таблица товаров в заказах';
 
-CREATE INDEX idx_product_category ON product (category_id);
-CREATE INDEX idx_order_customer ON orders (customer_id);
-CREATE INDEX idx_orderitem_order ON order_item (order_id);
-CREATE INDEX idx_orderitem_product ON order_item (product_id);
+CREATE INDEX IF NOT EXISTS idx_product_category ON product (category_id);
+CREATE INDEX IF NOT EXISTS idx_order_customer ON orders (customer_id);
+CREATE INDEX IF NOT EXISTS idx_orderitem_order ON order_item (order_id);
+CREATE INDEX IF NOT EXISTS idx_orderitem_product ON order_item (product_id);
